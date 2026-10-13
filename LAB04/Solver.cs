@@ -1,4 +1,6 @@
-﻿namespace LAB04
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace LAB04
 {
     /// <summary>
     /// Класс Solver содержит решения задач лабораторной работы.
@@ -22,9 +24,15 @@
         /// IntroduceYourself("John", 24) → "Hello! My name is John and i am 24 years old."
         /// IntroduceYourself("Sarah", 13) → "Hello! My name is Sarah and i am 13 years old."
         /// </example>
+    
         public static string IntroduceYourself(string name, int age)
         {
-            // Реализовать метод для решения задачи
+            string formattedName = char.ToUpper(name[0]) + name.Substring(1).ToLower();
+            
+            
+            
+            
+              return $"Hello! My name is {formattedName} and i am {age} years old.";
             throw new NotImplementedException();
         }
 
@@ -61,6 +69,11 @@
         /// </example>
         public static string CalculateBMI(double heightCm, double weightKg)
         {
+            double heightM = heightCm/ 100.0;
+            double bmi = weightKg / (heightM * heightM);
+
+            return $"Рост: {heightCm} см, Вес: {weightKg} кг, ИМТ = {bmi:F1}";
+
             // Реализовать метод для решения задачи
             throw new NotImplementedException();
         }
@@ -142,6 +155,7 @@
         /// </example>
         public static string GetSeason(int month)
         {
+            
             // Реализовать метод для решения задачи
             throw new NotImplementedException();
         }
@@ -159,6 +173,16 @@
         /// </example>
         public static string GetTriangleType(double a, double b, double c)
         {
+            if (a+b <=c || a+c <= b || b+c <= a)
+            return $"Треугольник со сторонами {a}, {b}, {c} - не существует";
+          
+            if (a == b && b == c)
+            return $"Треугольник со сторонами {a}, {b}, {c} - равносторонний";
+            else if (a == b || a==c || b==c)
+            return $"Треугольник со сторонами {a}, {b}, {c} - равнобедренный";
+            else
+            return $"Треугольник со сторонами {a}, {b}, {c} - разносторонний";
+
             // Реализовать метод для решения задачи
             throw new NotImplementedException();
         }
@@ -256,6 +280,14 @@
         /// </example>
         public static string ReverseNumber(int number)
         {
+           
+            int reversed = 0;
+            while (number != 0)
+            {
+               reversed = reversed * 10 + number % 10;
+               number /= 10;
+            }
+         return $"Перевёрнутое число: {reversed}";
             // Реализовать метод для решения задачи
             throw new NotImplementedException();
         }
@@ -358,6 +390,48 @@
         /// </example>
         public static string SecondLargest(int[] array)
         {
+            if (array == null || array.Length < 2) 
+            return "В массиве должно находиться минимум 2 элемента";
+        
+            int max = int.MinValue;
+            int secondMax = int.MinValue;
+
+            foreach (int x in array)
+            {
+              if (x > max)
+                {
+                   secondMax = max;
+                   max = x;
+                }
+              else if (x > secondMax && x < max)
+               {
+                   secondMax = x;
+                }
+            }
+
+            
+        if (secondMax == int.MinValue) {
+          secondMax = max;
+        }
+
+
+        int index = -1;
+        int maxIndex = Array.IndexOf(array, max);
+        for (int i=0; i< array.Length; i++)
+            {
+                //ищем индекс второго
+                if (array[i] == secondMax && i != maxIndex)
+                {
+                    index = i;
+                    break;
+                }
+            }
+             if (index == -1)
+            {
+                index = Array.IndexOf(array, secondMax);
+            }
+        return $"Второй по величине элемент: {secondMax} (индекс {index})";
+
             // Реализовать метод для решения задачи
             throw new NotImplementedException();
         }
