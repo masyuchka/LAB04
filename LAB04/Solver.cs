@@ -29,11 +29,7 @@ namespace LAB04
         {
             string formattedName = char.ToUpper(name[0]) + name.Substring(1).ToLower();
             
-            
-            
-            
-              return $"Hello! My name is {formattedName} and i am {age} years old.";
-            throw new NotImplementedException();
+            return $"Hello! My name is {formattedName} and i am {age} years old.";
         }
 
         // =========================
@@ -69,13 +65,10 @@ namespace LAB04
         /// </example>
         public static string CalculateBMI(double heightCm, double weightKg)
         {
-            double heightM = heightCm/ 100.0;
+            double heightM = heightCm / 100.0;
             double bmi = weightKg / (heightM * heightM);
 
             return $"Рост: {heightCm} см, Вес: {weightKg} кг, ИМТ = {bmi:F1}";
-
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -173,18 +166,25 @@ namespace LAB04
         /// </example>
         public static string GetTriangleType(double a, double b, double c)
         {
-            if (a+b <=c || a+c <= b || b+c <= a)
-            return $"Треугольник со сторонами {a}, {b}, {c} - не существует";
+            if (a + b <= c || a + c <= b || b + c <= a)
+            {
+               return $"Треугольник со сторонами {a}, {b}, {c} - не существует"; 
+            }
+                
           
-            if (a == b && b == c)
-            return $"Треугольник со сторонами {a}, {b}, {c} - равносторонний";
+            if (a == b && b == c) 
+            {
+                return $"Треугольник со сторонами {a}, {b}, {c} - равносторонний";
+            }
             else if (a == b || a==c || b==c)
-            return $"Треугольник со сторонами {a}, {b}, {c} - равнобедренный";
-            else
-            return $"Треугольник со сторонами {a}, {b}, {c} - разносторонний";
+            { 
+                return $"Треугольник со сторонами {a}, {b}, {c} - равнобедренный";
+            }
 
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
+            else 
+            {
+                return $"Треугольник со сторонами {a}, {b}, {c} - разносторонний";
+            }
         }
 
         /// <summary>
@@ -282,14 +282,14 @@ namespace LAB04
         {
            
             int reversed = 0;
+
             while (number != 0)
             {
                reversed = reversed * 10 + number % 10;
                number /= 10;
             }
-         return $"Перевёрнутое число: {reversed}";
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
+
+            return $"Перевёрнутое число: {reversed}";
         }
 
         /// <summary>
@@ -410,9 +410,10 @@ namespace LAB04
             }
 
             
-        if (secondMax == int.MinValue) {
-          secondMax = max;
-        }
+             if (secondMax == int.MinValue) 
+               {
+                   secondMax = max;
+                }
 
 
         int index = -1;
@@ -431,9 +432,6 @@ namespace LAB04
                 index = Array.IndexOf(array, secondMax);
             }
         return $"Второй по величине элемент: {secondMax} (индекс {index})";
-
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
         }
 
         /// <summary>
